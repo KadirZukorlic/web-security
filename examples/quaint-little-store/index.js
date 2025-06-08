@@ -131,7 +131,9 @@ app.get('/profile', async (req, res) => {
 app.patch('/profile', async (req, res) => {
   if (!res.locals.user) return res.status(403).send({ error: 'Forbidden' });
 
-  const fields = toParamsAndValues(req.body);
+  const { name, email, password } = req.body;
+
+  const fields = toParamsAndValues({ name, email, password });
   const sql = `UPDATE users SET ${fields} WHERE id = ${res.locals.user.id}`;
 
   try {
