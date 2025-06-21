@@ -11,7 +11,7 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: [
         "'self'",
         "'unsafe-inline'",
@@ -23,7 +23,13 @@ app.use(
         'https://static.frontendmasters.com',
         'https://fav.farm',
       ],
-      fontSrc: []
+      fontSrc: [
+        "'self'",
+        'https://fonts.googleapis.com',
+        'https://fonts.gstatic.com',
+      ],
+      connectSrc: ["'self'"],
+      objectSrc: ["'none'"],
     },
   })
 );
